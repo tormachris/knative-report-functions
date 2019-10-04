@@ -1,0 +1,11 @@
+
+language: bash
+
+services:
+  - docker
+
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin docker.pkg.github.com
+  - cd hello-world
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/hello-world .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/hello-world
