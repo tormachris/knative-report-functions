@@ -9,3 +9,6 @@ script:
   - cd hello-world
   - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/hello-world .
   - docker push docker.pkg.github.com/tormachris/knative-report-functions/hello-world
+  - cd ../isprime
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/isprime .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/isprime
