@@ -5,6 +5,8 @@ import (
   "log"
   "net/http"
   "os"
+  "math"
+  "strconv"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -13,16 +15,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return "", fmt.Errorf("Failed to parse %s as int! %v", target, err)
 	}
-	logrus.Infof("Checking if %s is prime", target)
+	log.Print("Checking if %s is prime", target)
 	if num <= 1 {
-		return fmt.Fprintf(w,"%d is not prime", num), nil
+		return fmt.Sprintf("%d is not prime", num), nil
 	}
 	for i := 2; i <= int(math.Floor(float64(num)/2)); i++ {
 		if num%i == 0 {
-			return fmt.Fprintf(w,"%d is not prime", num), nil
+			return fmt.Sprintf("%d is not prime", num), nil
 		}
 	}
-	return fmt.Fprintf(w,"%d is prime", num), nil
+	return fmt.Sprintf("%d is prime", num), nil
 }
 
 func main() {
