@@ -17,14 +17,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Print("Checking if %s is prime", target)
 	if num <= 1 {
-		fmt.Sprintf("%d is not prime", num), nil
+		fmt.Sprintf("%d is not prime", num)
 	}
 	for i := 2; i <= int(math.Floor(float64(num)/2)); i++ {
 		if num%i == 0 {
-			fmt.Sprintf("%d is not prime", num), nil
+			fmt.Sprintf("%d is not prime", num)
 		}
 	}
-	fmt.Sprintf("%d is prime", num), nil
+	fmt.Sprintf("%d is prime", num)
 }
 
 func main() {
