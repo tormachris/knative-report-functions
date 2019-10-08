@@ -6,9 +6,15 @@ services:
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin docker.pkg.github.com
-  - cd hello-world
-  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/hello-world .
-  - docker push docker.pkg.github.com/tormachris/knative-report-functions/hello-world
-  - cd ../isprime
-  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/isprime .
-  - docker push docker.pkg.github.com/tormachris/knative-report-functions/isprime
+  - cd hello-world-go
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/hello-world-go .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/hello-world-go
+  - cd ../isprime-go
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/isprime-go .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/isprime-go
+  - cd ../hello-world-python
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/hello-world-py .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/hello-world-py
+  - cd ../isprime-python
+  - docker build -t=docker.pkg.github.com/tormachris/knative-report-functions/isprime-py .
+  - docker push docker.pkg.github.com/tormachris/knative-report-functions/isprime-py
