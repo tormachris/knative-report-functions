@@ -9,7 +9,6 @@ app = Flask(__name__)
 def isprime():
     num = os.environ.get('TARGET', '107107')
     if num > 1:
-        # check for factors
         for i in range(2, num):
             if (num % i) == 0:
                 return "not prime"
