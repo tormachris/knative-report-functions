@@ -15,7 +15,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Errorf("Failed to parse %s as int! %v", target, err)
 	}
-	log.Print("Checking if %s is prime", target)
 	if num <= 1 {
 		fmt.Sprintf("%d is not prime", num)
 	}
@@ -28,8 +27,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-  log.Print("Hello world sample started.")
-
   http.HandleFunc("/", handler)
 
   port := os.Getenv("PORT")

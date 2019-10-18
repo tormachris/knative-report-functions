@@ -4,10 +4,16 @@ from flask import Flask
 
 app = Flask(__name__)
 
+def safe_cast(val, to_type, default=107107):
+    try:
+        return to_type(val)
+    except (ValueError, TypeError):
+        return default
 
 @app.route('/')
 def isprime():
-    num = os.environ.get('TARGET', '107107')
+    num = safe_cast(os.environ.get('TARGET', 107107),int)
+
     if num > 1:
         for i in range(2, num):
             if (num % i) == 0:
