@@ -3,10 +3,10 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.13 as builder
 
-# Create and change to the app directory.
-WORKDIR /app
-
 RUN go get -u github.com/golang/dep/cmd/dep
+
+# Create and change to the app directory.
+WORKDIR /go/src/app
 
 # Retrieve application dependencies.
 # This allows the container build to reuse cached dependencies.
