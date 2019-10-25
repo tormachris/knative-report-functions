@@ -6,6 +6,8 @@ FROM golang:1.13 as builder
 # Create and change to the app directory.
 WORKDIR /app
 
+RUN go get -u github.com/golang/dep/cmd/dep
+
 # Retrieve application dependencies.
 # This allows the container build to reuse cached dependencies.
 COPY go.* ./
@@ -13,6 +15,9 @@ RUN go mod download
 
 # Copy local code to the container image.
 COPY . ./
+
+#Ensure dependencies with dep
+RUN dep ensure
 
 # Build the binary.
 RUN CGO_ENABLED=0 GOOS=linux go build -v -o server
